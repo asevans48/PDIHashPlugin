@@ -121,13 +121,13 @@ public class HashPDIPluginDialog extends BaseStepDialog implements StepDialogInt
         formLayout.marginWidth = Const.FORM_MARGIN;
         formLayout.marginHeight = Const.FORM_MARGIN;
         shell.setLayout(formLayout);
-        shell.setText(BaseMessages.getString(PKG, "EmailExtractorPluginDialog.Shell.Title"));
+        shell.setText(BaseMessages.getString(PKG, "HashPDIPluginDialog.Shell.Title"));
         int middle = props.getMiddlePct();
         int margin = Const.MARGIN;
 
         // Stepname line
         wlStepname = new Label(shell, SWT.RIGHT);
-        wlStepname.setText(BaseMessages.getString(PKG, "EmailExtractorPluginDialog.Stepname.Label"));
+        wlStepname.setText(BaseMessages.getString(PKG, "HashPDIPluginDialog.Stepname.Label"));
         props.setLook(wlStepname);
         fdlStepname = new FormData();
         fdlStepname.left = new FormAttachment(0, 0);
@@ -147,7 +147,7 @@ public class HashPDIPluginDialog extends BaseStepDialog implements StepDialogInt
 
         // Set the in field name
         lfname = new Label( shell, SWT.RIGHT );
-        lfname.setText( BaseMessages.getString( PKG, "EmailExtractorPluginDialog.Fields.FieldName" ) );
+        lfname.setText( BaseMessages.getString( PKG, "HashPDIPluginDialog.Fields.FieldName" ) );
         props.setLook( lfname );
         fdlFname = new FormData();
         fdlFname.left = new FormAttachment( 0, 0 );
@@ -180,7 +180,7 @@ public class HashPDIPluginDialog extends BaseStepDialog implements StepDialogInt
 
         //outfield
         wOutFieldName = new Label(shell, SWT.RIGHT);
-        wOutFieldName.setText(BaseMessages.getString(PKG, "EmailExtractorPluginDialog.Output.FieldName"));
+        wOutFieldName.setText(BaseMessages.getString(PKG, "HashPDIPluginDialog.Output.FieldName"));
         props.setLook(wOutFieldName);
         fdlOutFieldName = new FormData();
         fdlOutFieldName.left = new FormAttachment(0, 0);
@@ -199,7 +199,7 @@ public class HashPDIPluginDialog extends BaseStepDialog implements StepDialogInt
 
         //flag for checkvalid
         wSeedValueName = new Label(shell,SWT.RIGHT);
-        wSeedValueName.setText(BaseMessages.getString(PKG,"EmailExtractorPluginDialog.Output.CheckValid"));
+        wSeedValueName.setText(BaseMessages.getString(PKG,"HashPDIPluginDialog.Output.SeedValue"));
         props.setLook(wSeedValueName);
         fdlSeedValueName = new FormData();
         fdlSeedValueName.left = new FormAttachment(0, 0);
@@ -207,6 +207,8 @@ public class HashPDIPluginDialog extends BaseStepDialog implements StepDialogInt
         fdlSeedValueName.right = new FormAttachment(middle, -margin);
         wSeedValueName.setLayoutData(fdlSeedValueName);
         wSeedValue = new TextVar(transMeta, shell, SWT.SINGLE | SWT.LEFT | SWT.BORDER);
+        wOutField.addModifyListener(lsMod);
+        wOutField.setText("-1");
         props.setLook(wSeedValue);
         fdlSeedValue = new FormData();
         fdlSeedValue.left = new FormAttachment(middle, 0);
@@ -306,8 +308,8 @@ public class HashPDIPluginDialog extends BaseStepDialog implements StepDialogInt
         stepname = wStepname.getText();
         String inField = wInFieldCombo.getText();
         String outField = wOutField.getText();
-        long seedValue = Long.valueOf(wSeedValue.getText());
-
+        long seedValue = Long.parseLong(wSeedValue.getText());
+        logBasic("SEED VALUE: " + seedValue);
         meta.setInField(inField);
         meta.setOutField(outField);
         meta.setSeedValue(seedValue);

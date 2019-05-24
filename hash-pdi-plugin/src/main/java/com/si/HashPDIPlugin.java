@@ -57,6 +57,8 @@ public class HashPDIPlugin extends BaseStep implements StepInterface {
    *          The data to initialize
    */
   public boolean init( StepMetaInterface stepMetaInterface, StepDataInterface stepDataInterface ) {
+    data = (HashPDIPluginData) stepDataInterface;
+    meta = (HashPDIPluginMeta) stepMetaInterface;
     return super.init( stepMetaInterface, stepDataInterface );
   }
 

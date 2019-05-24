@@ -1,0 +1,7 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+
+    <feature name="hash-pdi-plugin" version="1.0-SNAPSHOT">
+        <bundle>mvn:com.si/hash-pdi-plugin/1.0-SNAPSHOT</bundle>
+    </feature>
+
+</features>

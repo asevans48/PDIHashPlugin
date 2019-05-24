@@ -120,7 +120,7 @@
               <goal>create-kar</goal>
             </goals>
             <configuration>
-              <featuresFile>src/main/resources/hash-pdi-feature.xml</featuresFile>
+              <featuresFile>src/main/resources/hash-pdi-plugin-feature.xml</featuresFile>
             </configuration>
           </execution>
         </executions>

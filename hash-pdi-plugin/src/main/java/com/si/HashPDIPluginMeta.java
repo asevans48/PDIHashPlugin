@@ -49,9 +49,9 @@ import java.util.List;
 @Step( id = "HashPDIPlugin", image = "HashPDIPlugin.svg", name = "Hash Records",
     description = "Apply a hash algorithm to the rows in an effort to create a perfectly unique hash.", categoryDescription = "Transform" )
 public class HashPDIPluginMeta extends BaseStepMeta implements StepMetaInterface {
-  private String inField;
-  private String outField;
-  private Long seedValue;
+  private String inField = "";
+  private String outField = "";
+  private Long seedValue = 0L;
 
 
   private static Class<?> PKG = HashPDIPlugin.class; // for i18n purposes, needed by Translator2!!   $NON-NLS-1$
@@ -88,7 +88,7 @@ public class HashPDIPluginMeta extends BaseStepMeta implements StepMetaInterface
     StringBuilder xml = new StringBuilder();
     xml.append( XMLHandler.addTagValue( "inField", inField ) );
     xml.append(XMLHandler.addTagValue("outField", outField));
-    xml.append(XMLHandler.addTagValue("seedValue", seedValue));
+    xml.append(XMLHandler.addTagValue("seedValue", String.valueOf(seedValue)));
     return xml.toString();
   }
 
@@ -105,7 +105,7 @@ public class HashPDIPluginMeta extends BaseStepMeta implements StepMetaInterface
     try {
       setInField(Const.NVL(XMLHandler.getNodeValue(XMLHandler.getSubNode(stepnode, "inField")), ""));
       setOutField(Const.NVL(XMLHandler.getNodeValue(XMLHandler.getSubNode(stepnode, "outField")), ""));
-      setSeedValue(Long.getLong(Const.NVL(XMLHandler.getNodeValue(XMLHandler.getSubNode(stepnode, "seedValue")), "-1L")));
+      setSeedValue(Long.parseLong(Const.NVL(XMLHandler.getNodeValue(XMLHandler.getSubNode(stepnode, "seedValue")), "-1")));
     } catch ( Exception e ) {
       throw new KettleXMLException( "Demo plugin unable to read step info from XML node", e );
     }
