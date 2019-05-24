@@ -96,13 +96,6 @@
       <artifactId>guava</artifactId>
       <version>22.0</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/it.unimi.dsi/sux4j -->
-    <dependency>
-      <groupId>it.unimi.dsi</groupId>
-      <artifactId>sux4j</artifactId>
-      <version>4.3.0</version>
-      <scope>runtime</scope>
-    </dependency>
   </dependencies>
 
   <build>

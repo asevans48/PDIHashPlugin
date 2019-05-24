@@ -18,16 +18,14 @@
  */
 package com.si;
 
+import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.trans.step.BaseStepData;
 import org.pentaho.di.trans.step.StepDataInterface;
 
 
 public class HashPDIPluginData extends BaseStepData implements StepDataInterface {
-  // Add any execution-specific data here
+  public RowMetaInterface outputRowMeta;
 
-  /**
-   * 
-   */
   public HashPDIPluginData() {
     super();
   }
