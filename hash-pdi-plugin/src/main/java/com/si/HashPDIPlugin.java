@@ -73,9 +73,9 @@ public class HashPDIPlugin extends BaseStep implements StepInterface {
     if(seed <= 0){
       seed = 1073741823;
     }
-    HashFunction hfunc = Hashing.murmur3_128(seed);
+    HashFunction hfunc = Hashing.murmur3_32(seed);
     HashCode hcode = hfunc.hashBytes(text.getBytes());
-    return hcode.asLong();
+    return (long) hcode.asInt();
   }
 
   /**
